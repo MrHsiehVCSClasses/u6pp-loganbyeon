@@ -26,7 +26,7 @@ public class Player {
     }
     /**
      * gets hand
-     * fyi: all hands start empty
+     * btw, all hands start empty
      */
     public ArrayList <Card> getHand(){
         return myHand;

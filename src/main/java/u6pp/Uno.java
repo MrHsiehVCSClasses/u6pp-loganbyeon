@@ -26,9 +26,11 @@ public class Uno {
             player.add(myPlayer);
         }
     }
+    //returns current player
     Player getCurrentPlayer(){
         return player.get(playerIndex);
     }
+    //returns next player in order
     Player getNextPlayer(){
         int add = 1;
 
@@ -43,11 +45,11 @@ public class Uno {
         }
         return player.get(playerIndex + add);
     }
-
+    //returns top card on discard pile
     Card getTopDiscard(){
         return discard.deck.get(discard.deck.size() - 1);
     }
-
+    //returns player who has empty hand
     Player getWinner(){
         for(Player p : player){
             if(p.getHand().isEmpty() == true){
@@ -56,7 +58,10 @@ public class Uno {
         }
         return null;
     }
-
+    /**
+     * takes in card & string indicating color of card, 
+     * & checks whether card can be played on discard pile
+     */
     boolean playCard(Card c, String s){
         boolean temp = false;
 
@@ -94,7 +99,10 @@ public class Uno {
         if(temp == false){
             return false;
         }
-        
+        /**
+         * If card can be played, it's removed from player's hand 
+         * & added to discard pile
+         */
         if(c.canPlayOn(discard.peek())){
             discard.push(c);
             getCurrentPlayer().getHand().remove(c);
@@ -104,7 +112,7 @@ public class Uno {
         }
         return false;
     }
-
+    //updates current player index based on value of card played
     void nextPlayer(Card c){
         int add = 1;
         if(c.getValue() == Card.REVERSE && reversed == true){
@@ -126,6 +134,7 @@ public class Uno {
             playerIndex = playerIndex + add;
         }
     }
+    //returns ArrayList of players
     public ArrayList<Player> getPlayers() {
         return player;
     }

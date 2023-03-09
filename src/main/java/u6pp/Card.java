@@ -46,13 +46,21 @@ public class Card {
     String getValue(){
         return val;
     }
+    /**
+     * defines a method named "trySetColor" that takes a String "color" as input 
+     * and returns a boolean value
+     */
     boolean trySetColor(String color){
+        //initializes a boolean variable "check" to false
         boolean check = false;
+        //iterates through a constant array named "COLORS" using a for-each loop
         for(String c : COLORS){
+            //checks whether the current element is equal to the input color string using the equals() method
             if((c .equals(color))){
                 check = true;
-            }
+            } //if match, sets "check" to true
         }
+        //check value of "check"
         if(check == false){
             System.out.println("not real color");
             return false;
@@ -61,6 +69,7 @@ public class Card {
             System.out.println("color is wild or null");
             return false;
         }
+        //if true, sets "col" to input color string
         if(col.equals(WILD)){
             col = color;
             System.out.println("the color has been changed");
@@ -71,7 +80,9 @@ public class Card {
             return false;
         }
     }
-    
+    /**
+     * 
+     */
     boolean canPlayOn(Card input){
         if(input == null){
             return false;
